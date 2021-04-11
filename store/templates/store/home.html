@@ -1,0 +1,51 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4">
+            <img id="alley-image" src="{% static 'images/alley_potrait.jpg' %}" alt="A Picture of Diagonal Alley">
+        </div>
+
+        <div class="col-lg-8" id="scroll">
+            <div id="home-text">
+
+                <h1 id="home-heading">Diagon Alley Goes Online!</h1>
+                <hr>
+
+                <p id="notif">
+                    ***************************************************************
+                    <br>
+                    Diagon Alley brings all the shops to you. 
+                    <br>
+                    Now buy all the magical items on the Hogwarts supply list
+                    <br> 
+                    from the comfort of your home. 
+                    <br>
+                    ***************************************************************
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>Diagon Alley</strong> is the best wizarding alley in the whole of the Wizarding World of England.<br>
+                    It provides you an assortment of restaurants, shops, weaponry and other accomadities.<br>
+                    All items on the Hogwarts supply list can be bought at Diagon Alley, along with the best wands from Ollivanders.<br>
+
+                    <br><br>
+
+                    <em>
+                        <strong>Location: </strong>
+                        Charing Cross Road, London, England, Great Britain
+                        <br> 
+                        <strong>Permanent residents: </strong> 
+                        Garrick Ollivander, Madam Malkin, Florean Fortescue
+                        <br> 
+                        <strong>Affiliation:</strong>
+                        Wizarding World
+                    </em>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
