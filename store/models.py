@@ -38,6 +38,18 @@ class Order(models.Model):
     state = models.CharField(max_length=200, null=True)
     transaction_id = models.CharField(max_length=200, null=True)
 
+    @property
+    def get_total_price(self) -> float:
+        ordered_items = self.orderitem_set.all()
+        total = sum([item.get_total for item in ordered_items])
+        return total
+
+    @property
+    def get_total_quantity(self) -> int:
+        ordered_items = self.orderitem_set.all()
+        total = sum([item.quantity for item in ordered_items])
+        return total
+
     def __str__(self) -> str:
         return str(self.id)
 
@@ -49,6 +61,11 @@ class OrderItem(models.Model):
         Order, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_total(self) -> float:
+        total = self.quantity * self.product.price
+        return total
 
     def __str__(self) -> str:
         return str(self.id)
