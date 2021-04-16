@@ -1,23 +1,88 @@
-{% extends 'store/base.html' %}
-{% load static %}
+{% extends 'store/base.html' %} {% load static %} {% block content %}
 
-{% block content %}
+<!--  Welcome to Diagon Alley -->
+<div class="row">
+  <div class="col-lg-4">
+    <img
+      id="alley-image"
+      src="{% static 'images/alley_potrait.jpg' %}"
+      alt="A Picture of Diagonal Alley"
+    />
+  </div>
 
-    <div class="row">
-        {% for product in products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{{product.imageURL}}">
-            <div class="box-element product">
-                <h6><strong>{{product.name}}</strong></h6>
-                <hr>
-        
-                <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
-                <h4 style="float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
-            </div>
-        </div>
-        {% endfor %}
+  <div class="col-lg-8" id="scroll">
+    <div id="home-text">
+      <h1 id="home-heading">Diagon Alley Goes Online!</h1>
+      <hr />
+
+      <p id="notif">
+        ***************************************************************
+        <br />
+        Diagon Alley brings all the shops to you.
+        <br />
+        Now buy all the magical items on the Hogwarts supply list
+        <br />
+        from the comfort of your home.
+        <br />
+        ***************************************************************
+      </p>
+
+      <br />
+
+      <p>
+        <strong>Diagon Alley</strong> is the best wizarding alley in the whole
+        of the Wizarding World of England.<br />
+        It provides you an assortment of restaurants, shops, weaponry and other
+        accomadities.<br />
+        All items on the Hogwarts supply list can be bought at Diagon Alley,
+        along with the best wands from Ollivanders.<br />
+
+        <br /><br />
+
+        <em>
+          <strong>Location: </strong>
+          Charing Cross Road, London, England, Great Britain
+          <br />
+          <strong>Permanent residents: </strong>
+          Garrick Ollivander, Madam Malkin, Florean Fortescue
+          <br />
+          <strong>Affiliation:</strong>
+          Wizarding World
+        </em>
+      </p>
     </div>
+  </div>
+</div>
 
-    
+<!-- Products listings -->
+<br />
+<br />
+<hr />
+<h1 id="products-heading">Products</h1>
+<hr />
+
+<div class="row">
+  {% for product in products %}
+  <div class="col-lg-4">
+    <img class="thumbnail" src="{{product.imageURL}}" />
+    <div class="box-element product">
+      <h6><strong>{{product.name}}</strong></h6>
+      <hr />
+
+      <button
+        data-product="{{product.id}}"
+        data-action="add"
+        class="btn btn-outline-secondary add-btn update-cart"
+      >
+        Add to Cart
+      </button>
+      <a class="btn btn-outline-success" href="#">View</a>
+      <h4 style="float: right">
+        <strong>${{product.price|floatformat:2}}</strong>
+      </h4>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 {% endblock content %}
